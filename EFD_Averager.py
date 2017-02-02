@@ -13,7 +13,7 @@ sf = shp.Reader('/home/sgrieve/Hollow_Processing_Files/Mid_Hollows.shp')
 # below here is the real processing of the shapes, above is data i/o
 
 # loop over individual polygons in a multipart shapefile
-for shaperec in sf.shapeRecords()[200:500]:
+for shaperec in sf.shapeRecords():
 
     # Convert the shape instance into a format that EFD can use
     x, y, contour, NormCentroid = EFD.ProcessGeometry(shaperec)
