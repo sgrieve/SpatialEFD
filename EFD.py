@@ -303,3 +303,29 @@ def calculate_dc_coefficients(contour):
     # A0 and CO relate to the first point of the contour array as origin.
     # Adding those values to the coefficients to make them relate to true origin
     return (contour[0, 1] + C0, contour[0, 0] + A0)
+
+
+def ProcessGeometry(shape):
+    '''
+    Method which takes a single shape instance from a shapefile
+    eg shp.Reader('shapefile.shp').shapeRecords()[n]
+    where n is the index of the shape within a multipart geometry, and returns
+    a list of x coordinates, a list of y coordinates and contour, a list of
+    [x,y] coordinate pairs, normalized about the shape's centroid.
+
+    This handles all the geometry conversion that may be needed by the rest of
+    the EFD code.
+    '''
+    x = []
+    y = []
+
+    for point in shape.shape.points:
+        x.append(point[0])
+        y.append(point[1])
+
+    centroid = ContourCentroid(x, y)
+    X, Y, NormCentroid = NormContour(x, y, centroid)
+
+    contour = np.array([(a, b) for a, b in zip(Y, X)])
+
+    return x, y, contour, NormCentroid
