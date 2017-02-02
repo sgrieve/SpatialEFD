@@ -177,7 +177,7 @@ def PlotContour(ax, contour):
     ax.plot(contour[:, 1], contour[:, 0], 'b-', linewidth=2)
 
 
-def AverageCoefficients(coeffList):
+def AverageCoefficients(coeffList, nHarmonics):
     '''
     Average the coefficients contained in the list of coefficient arrays,
     coeffList.
@@ -185,7 +185,7 @@ def AverageCoefficients(coeffList):
     2-D particle shape averaging and comparison using Fourier descriptors:
     Powder Technology Volume 104, Issue 2, 1 September 1999, Pages 180-189
     '''
-    coeffsum = np.zeros((20, 4))
+    coeffsum = np.zeros((nHarmonics, 4))
     for coeff in coeffList:
         coeffsum += coeff
 
@@ -194,7 +194,7 @@ def AverageCoefficients(coeffList):
     return coeffsum
 
 
-def AverageSD(coeffList, avgcoeffs):
+def AverageSD(coeffList, avgcoeffs, nHarmonics):
     '''
     Use the coefficients contained in the list of coefficient arrays,
     coeffList, and the average coefficient values to compute the standard
@@ -203,7 +203,7 @@ def AverageSD(coeffList, avgcoeffs):
     2-D particle shape averaging and comparison using Fourier descriptors:
     Powder Technology Volume 104, Issue 2, 1 September 1999, Pages 180-189
     '''
-    coeffsum = np.zeros((20, 4))
+    coeffsum = np.zeros((nHarmonics, 4))
     for coeff in coeffList:
         coeffsum += (coeff ** 2.)
 
