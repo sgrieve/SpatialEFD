@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from get_downslope_orientation import rotatePoint, getBBox
+from Geometry import rotatePoint, getBBox
 
 
 def RotateContour(X, Y, rotation, centroid):
