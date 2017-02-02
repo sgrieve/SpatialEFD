@@ -241,7 +241,7 @@ def FourierPower(coeffs, contour):
             return i + 1
 
 
-def normalize_efd(coeffs, rotation, size_invariant=True):
+def normalize_efd(coeffs, size_invariant=True):
     '''
     Taken and modified to run in python 2.7 from pyefd.
     '''
